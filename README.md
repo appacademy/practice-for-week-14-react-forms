@@ -1,4 +1,4 @@
-# React Forms
+# Practice: React Forms
 
 As you've learned in earlier lessons, HTML forms are an essential and ubiquitous
 part of the web. Forms are used to search, create resources such as accounts and
@@ -10,7 +10,7 @@ When you finish this practice, you should be able to
 - Create a React functional component containing a simple form
 - Define controlled inputs with the `useState` hook for different form inputs
 
-## Set up
+## Setup
 
 Click the `Download Project` button at the bottom of this page to go to the
 starter repo, then load the repo into [CodeSandbox].
@@ -403,4 +403,4 @@ natural; you won't notice the difference!
 - Define controlled inputs with the `useState` hook
 
 [onchange event handler]: https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Modular-Curriculum/content/react-redux/topics/react-class-components/assets/react-forms-onchange-event-handler.png
-[codesandbox.io]: http://www.codesandbox.io
+[CodeSandbox]: https://www.codesandbox.io
