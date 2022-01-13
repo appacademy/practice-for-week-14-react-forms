@@ -12,34 +12,16 @@ When you finish this practice, you should be able to
 
 ## Set up
 
-Make sure you are logged in to your [codesandbox.io] account.
-
-Navigate to the starter repo for this short practice by clicking the `Download
-Project` button at the bottom of the page. Use one of the following options to
-load the practice into codesandbox.
-
-### Option 1 (the simplest option)
-
-- In the url of the starter repo, append `box` to the word `github` and hit
-  `Enter` or `return` depending on your computer. You should be taken to
-  [codesandbox.io] and the app should be loaded for you.
-- Example: If the repo was
-  `https://github.com/reduxjs/redux/tree/master/examples/todomvc`, it would
-  become `https://githubbox.com/reduxjs/redux/tree/master/examples/todomvc`
-
-### Option 2
-
-- Navigate to [codesandbox.io] and sign in. Click `Create Sandbox`, then choose
- `Import Project` from the sidebar. Paste the link to the starter repo and
- click `Import and Fork`.
+Click the `Download Project` button at the bottom of this page to go to the
+starter repo, then load the repo into [CodeSandbox].
 
 ## Creating a simple form
 
 To learn how to create HTML forms in React, you will create a `ContactUs`
-functional component that will contain a simple "Contact Us" form. The form will
+functional component that will contain a simple `Contact Us` form. The form will
 initially contain just three fields:
 
-- Name - The name of the user filling out the form
+- Name  - The name of the user filling out the form
 - Email - The user's email
 - Phone - The user's phone number
 
@@ -48,31 +30,31 @@ initially contain just three fields:
 To start, add a functional component named `ContactUs` and render the HTML form:
 
 ```js
-  // ./src/ContactUs.js
-  function ContactUs() {
-    return (
-      <div>
-        <h2>Contact Us</h2>
-        <form>
-          <div>
-            <label htmlFor='name'>Name:</label>
-            <input id='name' type='text' />
-          </div>
-          <div>
-            <label htmlFor='email'>Email:</label>
-            <input id='email' type='text' />
-          </div>
-          <div>
-            <label htmlFor='phone'>Phone:</label>
-            <input id='phone' type='text' />
-          </div>
-          <button>Submit</button>
-        </form>
-      </div>
-    );
-  }
+// ./src/ContactUs.js
+function ContactUs() {
+  return (
+    <div>
+      <h2>Contact Us</h2>
+      <form>
+        <div>
+          <label htmlFor='name'>Name:</label>
+          <input id='name' type='text' />
+        </div>
+        <div>
+          <label htmlFor='email'>Email:</label>
+          <input id='email' type='text' />
+        </div>
+        <div>
+          <label htmlFor='phone'>Phone:</label>
+          <input id='phone' type='text' />
+        </div>
+        <button>Submit</button>
+      </form>
+    </div>
+  );
+}
 
-  export default ContactUs;
+export default ContactUs;
 ```
 
 So far, there's nothing particularly interesting about this form. The only thing
@@ -82,21 +64,22 @@ attribute is `htmlFor` in React.
 Be sure to update your __App.js__ to render the `ContactUs` component:
 
 ```js
-  // ./src/App.js
-  import ContactUs from './ContactUs'
+// ./src/App.js
+import ContactUs from './ContactUs'
 
-  function App() {
-    return (
-      <ContactUs />
-    );
-  }
+function App() {
+  return (
+    <ContactUs />
+  );
+}
 
-  export default App;
+export default App;
 ```
 
-Look at the form in your sandbox browser. You can fill out the form, but the component currently doesn't know what the form input values are. To keep
-track of each of the input values, you will need to initialize and maintain
-component state.
+Look at the form in your sandbox browser. You can fill out the form, but the
+component currently doesn't know what the form input values are. To keep track
+of each of the input values, you will need to initialize and maintain component
+state.
 
 ## Adding state to the component
 
@@ -106,44 +89,49 @@ strings. Then use them to set the `value` attributes on the corresponding form
 field `<input>` elements:
 
 ```js
-  // ./src/ContactUs.js
-  import { useState } from 'react';
+// ./src/ContactUs.js
+import { useState } from 'react';
 
-  function ContactUs() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
+function ContactUs() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
 
-    return (
-      <div>
-        <h2>Contact Us</h2>
-        <form>
-          <div>
-            <label htmlFor='name'>Name:</label>
-            <input id='name' type='text' value={name} />
-          </div>
-          <div>
-            <label htmlFor='email'>Email:</label>
-            <input id='email' type='text' value={email} />
-          </div>
-          <div>
-            <label htmlFor='phone'>Phone:</label>
-            <input id='phone' type='text' value={phone} />
-          </div>
-          <button>Submit</button>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h2>Contact Us</h2>
+      <form>
+        <div>
+          <label htmlFor='name'>Name:</label>
+          <input id='name' type='text' value={name} />
+        </div>
+        <div>
+          <label htmlFor='email'>Email:</label>
+          <input id='email' type='text' value={email} />
+        </div>
+        <div>
+          <label htmlFor='phone'>Phone:</label>
+          <input id='phone' type='text' value={phone} />
+        </div>
+        <button>Submit</button>
+      </form>
+    </div>
+  );
+}
 
-  export default ContactUs;
+export default ContactUs;
 ```
 
 If you refresh the sandbox browser now, then you will get a warning in your
-console saying, "You provided a `value` prop to a form field without an
-`onChange` handler. This will render a read-only field." Also, if you try typing
-in any of the fields, they won't update anymore. This is because the `value`
-attribute for each input will always be an empty string.
+console saying:
+
+```text
+ You provided a `value` prop to a form field without an `onChange` handler. This
+ will render a read-only field.
+```
+
+Also, if you try typing in any of the fields, they won't update anymore. This is
+because the `value` attribute for each input will always be an empty string.
 
 For example, the `Name` field will always be an empty string because the `value`
 attribute on that field is set to the `name` state variable. The `name` state
@@ -157,12 +145,12 @@ element raises the `onChange` event, which makes it a natural choice for keeping
 the component state in sync:
 
 ```js
-  <input
-    id='name'
-    type='text'
-    onChange={e => setName(e.target.value)}
-    value={name}
-  />
+<input
+  id='name'
+  type='text'
+  onChange={e => setName(e.target.value)}
+  value={name}
+/>
 ```
 
 Remember that when an event is raised, the associated event handler method is
@@ -171,56 +159,56 @@ that raised the event is available through the `event` object's `target`
 property. Using the reference to the form field element, you can retrieve the
 current value as the `value` property on the target object.
 
-Use the same approach to add an `onChange` event handler to the "Email" and
-"Phone" form fields as well:
+Use the same approach to add an `onChange` event handler to the `Email` and
+`Phone` form fields as well:
 
 ```js
-  // ./src/ContactUs.js
-  import { useState } from 'react';
+// ./src/ContactUs.js
+import { useState } from 'react';
 
-  function ContactUs() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
+function ContactUs() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
 
-    return (
-      <div>
-        <h2>Contact Us</h2>
-        <form>
-          <div>
-            <label htmlFor='name'>Name:</label>
-            <input
-              id='name'
-              type='text'
-              onChange={e => setName(e.target.value)}
-              value={name}
-            />
-          </div>
-          <div>
-            <label htmlFor='email'>Email:</label>
-            <input
-              id='email'
-              type='text'
-              onChange={e => setEmail(e.target.value)}
-              value={email}
-            />
-          </div>
-          <div>
-            <label htmlFor='phone'>Phone:</label>
-            <input
-              id='phone'
-              type='text'
-              onChange={e => setPhone(e.target.value)}
-              value={phone}
-            />
-          </div>
-          <button>Submit</button>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h2>Contact Us</h2>
+      <form>
+        <div>
+          <label htmlFor='name'>Name:</label>
+          <input
+            id='name'
+            type='text'
+            onChange={e => setName(e.target.value)}
+            value={name}
+          />
+        </div>
+        <div>
+          <label htmlFor='email'>Email:</label>
+          <input
+            id='email'
+            type='text'
+            onChange={e => setEmail(e.target.value)}
+            value={email}
+          />
+        </div>
+        <div>
+          <label htmlFor='phone'>Phone:</label>
+          <input
+            id='phone'
+            type='text'
+            onChange={e => setPhone(e.target.value)}
+            value={phone}
+          />
+        </div>
+        <button>Submit</button>
+      </form>
+    </div>
+  );
+}
 
-  export default ContactUs;
+export default ContactUs;
 ```
 
 Click the `Open in New Window` button in your sandbox browser (upper right) and
@@ -240,35 +228,35 @@ form. Within the `onSubmit` event handler prevent the default behavior so that
 the page doesn't reload:
 
 ```js
-  const onSubmit = e => {
-    // Prevent the default form behavior so the page doesn't reload.
-    e.preventDefault();
-  };
-  ...
-  <form onSubmit={onSubmit}>
-  ...
+const onSubmit = e => {
+  // Prevent the default form behavior so the page doesn't reload.
+  e.preventDefault();
+};
+...
+<form onSubmit={onSubmit}>
+...
 ```
 
 Then use the `name`, `email`, and `phone` values from state to create a new
 `contactUsInformation` object literal:
 
 ```js
-  const onSubmit = e => {
-    // Prevent the default form behavior so the page doesn't reload.
-    e.preventDefault();
+const onSubmit = e => {
+  // Prevent the default form behavior so the page doesn't reload.
+  e.preventDefault();
 
-    // Create a new object for the contact us information.
-    const contactUsInformation = {
-      name,
-      email,
-      phone,
-      submittedOn: new Date()
-    };
-
-    // Ideally, we'd persist this information to a database using a RESTful API.
-    // For now, though, just log the contact us information to the console.
-    console.log(contactUsInformation);
+  // Create a new object for the contact us information.
+  const contactUsInformation = {
+    name,
+    email,
+    phone,
+    submittedOn: new Date()
   };
+
+  // Ideally, we'd persist this information to a database using a RESTful API.
+  // For now, though, just log the contact us information to the console.
+  console.log(contactUsInformation);
+};
 ```
 
 Notice that an additional property, `submittedOn`, is being added to the
@@ -281,11 +269,42 @@ Now that the form submission has been processed, reset the `name`, `email`, and
 `phone` values to empty strings:
 
 ```js
-  const onSubmit = e => {
-    // Prevent the default form behavior so the page doesn't reload.
-    e.preventDefault();
+const onSubmit = e => {
+  // Prevent the default form behavior so the page doesn't reload.
+  e.preventDefault();
 
-    // Create a new object for the contact us information.
+  // Create a new object for the contact us information.
+  const contactUsInformation = {
+    name,
+    email,
+    phone,
+    submittedOn: new Date(),
+  };
+
+  // Ideally, we'd persist this information to a database using a RESTful API.
+  // For now, though, just log the contact us information to the console.
+  console.log(contactUsInformation);
+
+  // Reset the form state.
+  setName('');
+  setEmail('');
+  setPhone('');
+};
+```
+
+Putting all of that together gives you this:
+
+```js
+// ./src/ContactUs.js
+import { useState } from 'react';
+
+function ContactUs() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+
+  const onSubmit = e => {
+    e.preventDefault();
     const contactUsInformation = {
       name,
       email,
@@ -293,84 +312,55 @@ Now that the form submission has been processed, reset the `name`, `email`, and
       submittedOn: new Date(),
     };
 
-    // Ideally, we'd persist this information to a database using a RESTful API.
-    // For now, though, just log the contact us information to the console.
     console.log(contactUsInformation);
-
-    // Reset the form state.
     setName('');
     setEmail('');
     setPhone('');
   };
+
+  return (
+    <div>
+      <h2>Contact Us</h2>
+      <form onSubmit={onSubmit}>
+        <div>
+          <label htmlFor='name'>Name:</label>
+          <input
+            id='name'
+            type='text'
+            onChange={e => setName(e.target.value)}
+            value={name}
+          />
+        </div>
+        <div>
+          <label htmlFor='email'>Email:</label>
+          <input
+            id='email'
+            type='text'
+            onChange={e => setEmail(e.target.value)}
+            value={email}
+          />
+        </div>
+        <div>
+          <label htmlFor='phone'>Phone:</label>
+          <input
+            id='phone'
+            type='text'
+            onChange={e => setPhone(e.target.value)}
+            value={phone}
+          />
+        </div>
+        <button>Submit</button>
+      </form>
+    </div>
+  );
+}
+
+export default ContactUs;
 ```
 
-Putting all of that together gives you this:
-
-```js
-  // ./src/ContactUs.js
-  import { useState } from 'react';
-
-  function ContactUs() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-
-    const onSubmit = e => {
-      e.preventDefault();
-      const contactUsInformation = {
-        name,
-        email,
-        phone,
-        submittedOn: new Date(),
-      };
-
-      console.log(contactUsInformation);
-      setName('');
-      setEmail('');
-      setPhone('');
-    };
-
-    return (
-      <div>
-        <h2>Contact Us</h2>
-        <form onSubmit={onSubmit}>
-          <div>
-            <label htmlFor='name'>Name:</label>
-            <input
-              id='name'
-              type='text'
-              onChange={e => setName(e.target.value)}
-              value={name}
-            />
-          </div>
-          <div>
-            <label htmlFor='email'>Email:</label>
-            <input
-              id='email'
-              type='text'
-              onChange={e => setEmail(e.target.value)}
-              value={email}
-            />
-          </div>
-          <div>
-            <label htmlFor='phone'>Phone:</label>
-            <input
-              id='phone'
-              type='text'
-              onChange={e => setPhone(e.target.value)}
-              value={phone}
-            />
-          </div>
-          <button>Submit</button>
-        </form>
-      </div>
-    );
-  }
-
-  export default ContactUs;
-```
-
-You can now fill out each form field in your sandbox browser. When you click `Submit`, an object containing your "Contact Us" information should appear in the console! Also, note that the page doesn't reload.
+You can now fill out each form field in your sandbox browser. When you click
+`Submit`, an object containing your `Contact Us` information should appear in
+the console! Also, note that the page doesn't reload.
 
 ## Controlled components
 
