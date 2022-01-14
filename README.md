@@ -278,7 +278,7 @@ const onSubmit = e => {
     name,
     email,
     phone,
-    submittedOn: new Date(),
+    submittedOn: new Date()
   };
 
   // Ideally, we'd persist this information to a database using a RESTful API.
@@ -309,7 +309,7 @@ function ContactUs() {
       name,
       email,
       phone,
-      submittedOn: new Date(),
+      submittedOn: new Date()
     };
 
     console.log(contactUsInformation);
