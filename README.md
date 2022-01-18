@@ -399,8 +399,8 @@ natural; you won't notice the difference!
 
 **Congratulations!** In this practice you have learned how to
 
-- Create a React functional component containing a simple form
-- Define controlled inputs with the `useState` hook
+1. Create a React functional component containing a simple form
+2. Define controlled inputs with the `useState` hook
 
 [onchange event handler]: https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Modular-Curriculum/content/react-redux/topics/react-class-components/assets/react-forms-onchange-event-handler.png
 [CodeSandbox]: https://www.codesandbox.io
